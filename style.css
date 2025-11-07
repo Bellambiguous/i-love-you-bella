@@ -2,19 +2,20 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-    border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%; /* irregular shape */
+    background: radial-gradient(circle at 40% 45%, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0) 100%),
+                radial-gradient(circle at 60% 55%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+    border-radius: 35% 65% 55% 45% / 45% 55% 50% 50%; /* irregular shape */
     pointer-events: none;
     transition: left 0.05s ease, top 0.05s ease;
-    animation: flicker 0.3s infinite;
+    animation: dramaticFlicker 0.2s infinite;
 }
 
-/* Flicker animation for more natural glow */
-@keyframes flicker {
-    0%   { transform: scale(1); box-shadow: 0 0 60px 30px rgba(255,255,255,0.2); }
-    25%  { transform: scale(1.05); box-shadow: 0 0 65px 35px rgba(255,255,255,0.25); }
-    50%  { transform: scale(0.95); box-shadow: 0 0 58px 28px rgba(255,255,255,0.2); }
-    75%  { transform: scale(1.03); box-shadow: 0 0 63px 33px rgba(255,255,255,0.22); }
-    100% { transform: scale(1); box-shadow: 0 0 60px 30px rgba(255,255,255,0.2); }
+/* Dramatic flicker: random scaling and glow intensity */
+@keyframes dramaticFlicker {
+    0%   { transform: scale(1.0); filter: brightness(1.0); }
+    20%  { transform: scale(1.08, 1.05) rotate(2deg); filter: brightness(1.2); }
+    40%  { transform: scale(0.95, 1.02) rotate(-1deg); filter: brightness(0.9); }
+    60%  { transform: scale(1.05, 1.08) rotate(1deg); filter: brightness(1.15); }
+    80%  { transform: scale(0.97, 1.03) rotate(-2deg); filter: brightness(0.95); }
+    100% { transform: scale(1.0); filter: brightness(1.0); }
 }
-

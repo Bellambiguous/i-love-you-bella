@@ -1,27 +1,28 @@
 body {
     margin: 0;
     height: 100vh;
-    background: #111; /* slightly dark gray */
+    background: #1a1a1a; /* slightly gray/dark */
     overflow: hidden;
-    cursor: none; /* optional: hide cursor for cinematic effect */
+    cursor: none;
 }
 
-/* Candle flame */
 #candle {
     position: absolute;
-    width: 50px;  /* medium size */
+    width: 50px;
     height: 60px;
     pointer-events: none;
 
+    /* multiple layers for organic flame */
     background:
-        radial-gradient(ellipse 50% 60% at 45% 40%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 80%),
-        radial-gradient(ellipse 60% 60% at 55% 50%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 40% 60% 55% 45% / 45% 55% 50% 50%; /* irregular */
-    filter: blur(10px);
+        radial-gradient(ellipse 40% 50% at 40% 40%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0) 80%),
+        radial-gradient(ellipse 60% 70% at 60% 50%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%),
+        radial-gradient(ellipse 80% 80% at 55% 40%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 40% 60% 55% 45% / 50% 55% 45% 50%; /* irregular */
+    filter: blur(12px);
     animation: flameFlicker 0.15s infinite;
+    box-shadow: 0 0 40px 20px rgba(255,255,255,0.1); /* ambient glow */
 }
 
-/* Dramatic, alive flicker */
 @keyframes flameFlicker {
     0%   { transform: scale(1,1) rotate(0deg); opacity: 0.7; }
     20%  { transform: scale(1.08,0.95) rotate(2deg); opacity: 1; }

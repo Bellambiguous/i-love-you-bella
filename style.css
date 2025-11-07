@@ -3,9 +3,18 @@
     width: 40px;
     height: 40px;
     background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-    border-radius: 50%;
+    border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%; /* irregular shape */
     pointer-events: none;
     transition: left 0.05s ease, top 0.05s ease;
     animation: flicker 0.3s infinite;
 }
-background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.15) 60%, rgba(255,255,255,0) 100%);
+
+/* Flicker animation for more natural glow */
+@keyframes flicker {
+    0%   { transform: scale(1); box-shadow: 0 0 60px 30px rgba(255,255,255,0.2); }
+    25%  { transform: scale(1.05); box-shadow: 0 0 65px 35px rgba(255,255,255,0.25); }
+    50%  { transform: scale(0.95); box-shadow: 0 0 58px 28px rgba(255,255,255,0.2); }
+    75%  { transform: scale(1.03); box-shadow: 0 0 63px 33px rgba(255,255,255,0.22); }
+    100% { transform: scale(1); box-shadow: 0 0 60px 30px rgba(255,255,255,0.2); }
+}
+

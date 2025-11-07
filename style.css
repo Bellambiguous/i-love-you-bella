@@ -1,0 +1,27 @@
+/* Full screen black background, slightly alive */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000; /* black base */
+}
+
+#dark-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Candle as small dim glowing circle */
+#candle {
+    position: absolute;
+    width: 20px; /* small */
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6); /* dim white */
+    border-radius: 50%;
+    box-shadow: 0 0 30px 10px rgba(255,255,255,0.2); /* soft glow */
+    pointer-events: none;
+    transition: left 0.05s ease, top 0.05s ease; /* smooth movement */
+}

@@ -1,21 +1,32 @@
-#candle {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle at 40% 45%, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0) 100%),
-                radial-gradient(circle at 60% 55%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-    border-radius: 35% 65% 55% 45% / 45% 55% 50% 50%; /* irregular shape */
-    pointer-events: none;
-    transition: left 0.05s ease, top 0.05s ease;
-    animation: dramaticFlicker 0.2s infinite;
+body {
+    margin: 0;
+    height: 100vh;
+    background: #111; /* slightly dark gray */
+    overflow: hidden;
+    cursor: none; /* optional: hide cursor for cinematic effect */
 }
 
-/* Dramatic flicker: random scaling and glow intensity */
-@keyframes dramaticFlicker {
-    0%   { transform: scale(1.0); filter: brightness(1.0); }
-    20%  { transform: scale(1.08, 1.05) rotate(2deg); filter: brightness(1.2); }
-    40%  { transform: scale(0.95, 1.02) rotate(-1deg); filter: brightness(0.9); }
-    60%  { transform: scale(1.05, 1.08) rotate(1deg); filter: brightness(1.15); }
-    80%  { transform: scale(0.97, 1.03) rotate(-2deg); filter: brightness(0.95); }
-    100% { transform: scale(1.0); filter: brightness(1.0); }
+/* Candle flame */
+#candle {
+    position: absolute;
+    width: 50px;  /* medium size */
+    height: 60px;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse 50% 60% at 45% 40%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 80%),
+        radial-gradient(ellipse 60% 60% at 55% 50%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 40% 60% 55% 45% / 45% 55% 50% 50%; /* irregular */
+    filter: blur(10px);
+    animation: flameFlicker 0.15s infinite;
+}
+
+/* Dramatic, alive flicker */
+@keyframes flameFlicker {
+    0%   { transform: scale(1,1) rotate(0deg); opacity: 0.7; }
+    20%  { transform: scale(1.08,0.95) rotate(2deg); opacity: 1; }
+    40%  { transform: scale(0.95,1.05) rotate(-2deg); opacity: 0.8; }
+    60%  { transform: scale(1.05,0.9) rotate(1deg); opacity: 0.9; }
+    80%  { transform: scale(0.97,1.1) rotate(-1deg); opacity: 0.85; }
+    100% { transform: scale(1,1) rotate(0deg); opacity: 0.7; }
 }

@@ -1,11 +1,24 @@
 const candle = document.getElementById('candle');
 
-document.addEventListener('mousemove', (e) => {
-    // Get current candle position
-    let candleX = parseFloat(candle.style.left) || 0;
-    let candleY = parseFloat(candle.style.top) || 0;
+// Start candle in center
+let candleX = window.innerWidth / 2;
+let candleY = window.innerHeight / 2;
 
-    // Smoothly move candle toward mouse
-    candle.style.left = candleX + (e.clientX - candleX - 10) * 0.1 + 'px';
-    candle.style.top = candleY + (e.clientY - candleY - 10) * 0.1 + 'px';
+document.addEventListener('mousemove', (e) => {
+    const targetX = e.clientX - 20; // center candle
+    const targetY = e.clientY - 20;
+
+    // Use requestAnimationFrame for smooth movement
+    function animate() {
+        // Move a fraction toward target
+        candleX += (targetX - candleX) * 0.1;
+        candleY += (targetY - candleY) * 0.1;
+
+        candle.style.left = candleX + 'px';
+        candle.style.top = candleY + 'px';
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 });
